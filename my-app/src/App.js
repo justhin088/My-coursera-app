@@ -7,10 +7,21 @@ import Footer from './components/Footer';
 function App() {
   return (
     <>
-      <Header />
-      <Nav />
-      <Main />
-      <Footer />
+      <header>
+        <Header />
+      </header>
+
+      <nav>
+        <Nav />
+      </nav>
+
+      <main>
+        <Main />
+      </main>
+
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 }
