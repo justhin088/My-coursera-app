@@ -1,24 +1,38 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';  // Step 1: import useNavigate
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Reservations = ({ availableTimes, dispatch }) => {
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState('');
-  const navigate = useNavigate();  // Step 1: get navigate function
+  const [isFormValid, setIsFormValid] = useState(false);
+  const navigate = useNavigate();
+
+  const todayDateString = new Date().toISOString().split("T")[0];
+
+  // Validation logic to check if form is valid
+  useEffect(() => {
+    // Basic validation conditions
+    const isDateValid = date !== '' && date >= todayDateString;
+    const isTimeValid = time !== '';
+    const isGuestsValid = guests >= 1 && guests <= 10;
+    const isOccasionValid = occasion !== '';
+
+    setIsFormValid(isDateValid && isTimeValid && isGuestsValid && isOccasionValid);
+  }, [date, time, guests, occasion, todayDateString]);
 
   const handleDateChange = (e) => {
     const selectedDate = e.target.value;
     setDate(selectedDate);
-    dispatch({ type: "update", date: selectedDate }); // update available times on date change
+    dispatch({ type: "update", date: selectedDate });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!date || !time) {
-      alert('Please select date and time.');
+    if (!isFormValid) {
+      alert('Please fill in the form correctly.');
       return;
     }
 
@@ -26,14 +40,11 @@ const Reservations = ({ availableTimes, dispatch }) => {
     const success = window.submitAPI ? window.submitAPI(formData) : true;
 
     if (success) {
-      // Clear form
       setDate('');
       setTime('');
       setGuests(1);
       setOccasion('');
-      dispatch({ type: "update", date: '' }); // reset available times
-
-      // Step 2: Navigate to confirmed booking page
+      dispatch({ type: "update", date: '' });
       navigate('/confirmed');
     } else {
       alert('Reservation failed.');
@@ -51,6 +62,8 @@ const Reservations = ({ availableTimes, dispatch }) => {
           value={date}
           onChange={handleDateChange}
           required
+          min={todayDateString}
+          aria-label="Choose reservation date"
         />
 
         <label htmlFor="res-time">Choose time</label>
@@ -59,6 +72,7 @@ const Reservations = ({ availableTimes, dispatch }) => {
           value={time}
           onChange={(e) => setTime(e.target.value)}
           required
+          aria-label="Choose reservation time"
         >
           <option value="">Select a time</option>
           {availableTimes.map((t) => (
@@ -75,6 +89,7 @@ const Reservations = ({ availableTimes, dispatch }) => {
           value={guests}
           onChange={(e) => setGuests(Number(e.target.value))}
           required
+          aria-label="Number of guests"
         />
 
         <label htmlFor="occasion">Occasion</label>
@@ -83,6 +98,7 @@ const Reservations = ({ availableTimes, dispatch }) => {
           value={occasion}
           onChange={(e) => setOccasion(e.target.value)}
           required
+          aria-label="Select occasion"
         >
           <option value="">Select occasion</option>
           <option value="Birthday">Birthday</option>
@@ -90,7 +106,12 @@ const Reservations = ({ availableTimes, dispatch }) => {
           <option value="Dinner Date">Dinner Date</option>
         </select>
 
-        <input type="submit" value="Make Your Reservation" />
+        <input
+          type="submit"
+          value="Make Your Reservation"
+          disabled={!isFormValid}  // Disabled until form is valid
+          aria-label="Submit reservation form"
+        />
       </form>
     </div>
   );
