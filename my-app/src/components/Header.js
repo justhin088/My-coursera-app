@@ -1,7 +1,9 @@
+import './Header.css';
+
+
 function Header() {
   return (
-    <header className="App-header">
-      <h1>Homepage</h1>
+    <header className="header">
     </header>
   );
 }
