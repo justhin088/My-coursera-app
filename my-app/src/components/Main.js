@@ -1,11 +1,9 @@
 import React, { useReducer } from "react";
-import { useNavigate } from 'react-router-dom'; // <- Import useNavigate
 import "./Main.css";
 import Hero from "./Hero";
 import Specials from "./Specials";
 import Testimonials from "./Testimonials";
 import About from "./About";
-import Reservations from "./Reservations";
 
 // Fetch available times from API or mock
 const fetchAvailableTimes = (date) => {
@@ -26,17 +24,6 @@ const initializeTimes = () => {
 
 export default function Main() {
   const [availableTimes, dispatch] = useReducer(updateTimes, [], initializeTimes);
-  const navigate = useNavigate(); // <- Get navigate function
-
-  // submitForm function that submits form data and navigates on success
-  const submitForm = (formData) => {
-    const success = window.submitAPI ? window.submitAPI(formData) : true;
-    if (success) {
-      navigate('/confirmed');  // Navigate to confirmation page
-      return true;
-    }
-    return false;
-  };
 
   return (
     <main>
@@ -44,12 +31,17 @@ export default function Main() {
       <Specials />
       <Testimonials />
       <About />
-      {/* Pass submitForm as a prop */}
-      <Reservations
-        availableTimes={availableTimes}
-        dispatch={dispatch}
-        submitForm={submitForm}
-      />
+
+      {/* ===== Footer ===== */}
+      <footer className="footer">
+        <div className="footer-logo">Little Lemon</div>
+        <div className="footer-text">© 2025 Little Lemon. All rights reserved.</div>
+        <div className="footer-nav">
+          <a href="/">Home</a>
+          <a href="/reservations">Reservations</a>
+          <a href="/about">About</a>
+        </div>
+      </footer>
     </main>
   );
 }
