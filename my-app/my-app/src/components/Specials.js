@@ -2,17 +2,17 @@ import SpecialCard from './SpecialCard';
 
 const specialsData = [
   {
-    image: "/images/Simply-Recipes-Easy-Greek-Salad-LEAD-2-4601eff771fd4de38f9722e8cafc897a.jpg",
+    image: "/images/greek salad.jpg",
     title: "Greek Salad",
     description: "The famous Greek salad of crispy lettuce, peppers, olives, and our Chicago style feta cheese."
   },
   {
-    image: "/images/caprese-burrata-bruschetta-2.jpeg",
+    image: "/images/bruschetta.jpg",
     title: "Bruschetta",
     description: "Grilled bread with garlic and toppings including tomatoes, olive oil, and basil."
   },
   {
-    image: "/images/lemon-ripple-cheesecake-85783-1.jpeg",
+    image: "/images/lemon dessert.jpg",
     title: "Lemon Dessert",
     description: "Traditional lemon dessert with lemon zest and fresh cream."
   }

@@ -1,0 +1,196 @@
+/* ===== Hero Section ===== */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #8b8b8b;
+  color: white;
+  padding: 3rem 2rem;
+  height: 380px;
+}
+
+.hero-text {
+  max-width: 50%;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  color: black;
+  margin-left: 300px;
+}
+
+.hero h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: black;
+  margin-left: 300px;
+}
+
+.hero p {
+  margin-bottom: 1.5rem;
+  color: black;
+  margin-left: 300px;
+}
+
+.hero button {
+  background: black;
+  color: white;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: 300px;
+}
+
+.hero img {
+  max-width: 600px;
+  border-radius: 10px;
+  margin-right: 130px;
+}
+
+
+/* ===== Specials Section ===== */
+.specials {
+  padding: 3rem 2rem;
+}
+
+.specials-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.specials-header button {
+  background: black;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.specials-cards {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background: #f2f2f2;
+  padding: 1rem;
+  border-radius: 8px;
+  flex: 1;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.card a {
+  display: block;
+  margin-top: 1rem;
+  color: black;
+  text-decoration: underline;
+  font-size: 0.9rem;
+}
+
+
+/* ===== Testimonials Section ===== */
+.testimonials {
+  background: #e0e0e0;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.testimonial-cards {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.testimonial {
+  background: white;
+  padding: 1rem;
+  border-radius: 6px;
+  width: 150px;
+}
+
+
+/* ===== About Section ===== */
+.about {
+  display: flex;
+  justify-content: space-between;
+  padding: 3rem 2rem;
+  gap: 2rem;
+}
+
+.about-h1 {
+  margin-left: 290px;
+  margin-ri: 260px;
+}
+
+.about-h3 {
+  margin-top: 50px;
+}
+
+.about-images {
+  display: flex;
+  gap: 1rem;
+  flex: 1;
+}
+
+.about-images img {
+  width: 150px;
+  border-radius: 8px;
+}
+
+.about-p {
+  margin-top: 200px;
+  right: 900px;
+}
+
+/* ===== Navigation Bar ===== */
+.nav {
+  background-color: #333;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.nav .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav ul li {
+  display: inline;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav a:hover {
+  color: #f4ce14; /* Lemon yellow */
+}
